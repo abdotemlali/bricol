@@ -426,16 +426,6 @@ Si applicable, ajouter des screenshots.
  - Version [e.g. 22]
 ```
 
-## 🤝 Contribution
-
-Les contributions sont les bienvenues ! Veuillez lire notre [CONTRIBUTING.md](CONTRIBUTING.md) pour plus de détails sur notre code de conduite et le processus de soumission des pull requests.
-
-### Processus de Contribution
-1. Fork le projet
-2. Créer une branche feature (`git checkout -b feature/AmazingFeature`)
-3. Commit vos changements (`git commit -m 'Add some AmazingFeature'`)
-4. Push vers la branche (`git push origin feature/AmazingFeature`)
-5. Ouvrir une Pull Request
 
 
 <div align="center">
