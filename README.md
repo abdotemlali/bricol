@@ -1,341 +1,451 @@
-# My Bricole - Application Web de Bricolage
+# 🔨 My Bricole - Plateforme de Services de Bricolage
 
-Une plateforme complète permettant de connecter les bricoleurs avec des professionnels pour partager des tutoriels, demander des services et gérer des projets de bricolage.
+![My Bricole Logo](https://img.shields.io/badge/My%20Bricole-DIY%20Platform-orange?style=for-the-badge&logo=hammer)
 
 ## 📋 Table des Matières
 
-- [À Propos](#à-propos)
-- [Fonctionnalités](#fonctionnalités)
-- [Architecture](#architecture)
-- [Technologies Utilisées](#technologies-utilisées)
-- [Prérequis](#prérequis)
-- [Installation](#installation)
-- [Configuration](#configuration)
-- [Utilisation](#utilisation)
-- [API Endpoints](#api-endpoints)
-- [Structure du Projet](#structure-du-projet)
-- [Contributeurs](#contributeurs)
-- [Licence](#licence)
+- [À Propos](#-à-propos)
+- [Fonctionnalités](#-fonctionnalités)
+- [Technologies Utilisées](#-technologies-utilisées)
+- [Architecture](#-architecture)
+- [Installation](#-installation)
+- [Utilisation](#-utilisation)
+- [Schémas UML](#-schémas-uml)
+- [API Documentation](#-api-documentation)
+- [Équipe](#-équipe)
+- [Licence](#-licence)
 
-## 🔍 À Propos
+## 🎯 À Propos
 
-My Bricole est une application web full-stack développée dans le cadre d'un projet intégré en Génie Informatique et Digitalisation. Cette plateforme facilite les interactions entre différents types d'utilisateurs dans le domaine du bricolage :
+**My Bricole** est une application web moderne qui connecte les clients avec des professionnels du bricolage. La plateforme permet aux utilisateurs de demander des services, aux professionnels de proposer leurs compétences, et aux administrateurs de superviser l'ensemble des activités.
 
-- **Visiteurs** : Navigation libre du catalogue de services
-- **Clients** : Demande de services, évaluation et réclamations
-- **Professionnels** : Création et gestion de services, propositions
-- **Administrateurs** : Supervision globale de la plateforme
+### 🎯 Objectifs
+- Faciliter la mise en relation entre clients et professionnels
+- Créer un environnement sécurisé pour les transactions de services
+- Offrir une interface intuitive et moderne
+- Assurer une gestion efficace des demandes et propositions
 
 ## ✨ Fonctionnalités
 
-### Fonctionnalités Principales
+### 👥 Pour les Utilisateurs
 
-- **🔐 Gestion des utilisateurs**
-  - Inscription et connexion sécurisées
-  - Gestion des profils utilisateur
-  - Système de rôles (Visiteur, Client, Professionnel, Admin)
+#### 🔍 **Visiteurs**
+- ![Browse](https://img.shields.io/badge/-Browse-blue?style=flat-square&logo=search) Consultation du catalogue de services
+- ![Search](https://img.shields.io/badge/-Search-green?style=flat-square&logo=magnifying-glass) Recherche de services spécifiques
+- ![Details](https://img.shields.io/badge/-Details-purple?style=flat-square&logo=info) Accès aux détails des services
 
-- **📚 Gestion des contenus**
-  - Consultation et partage de tutoriels
-  - Catalogue de services de bricolage
-  - Système de recherche et filtrage avancés
+#### 👤 **Clients**
+- ![Auth](https://img.shields.io/badge/-Authentication-red?style=flat-square&logo=key) Authentification sécurisée
+- ![Request](https://img.shields.io/badge/-Request-orange?style=flat-square&logo=plus) Demande de services
+- ![Rate](https://img.shields.io/badge/-Rating-yellow?style=flat-square&logo=star) Évaluation des services
+- ![Complaint](https://img.shields.io/badge/-Complaints-gray?style=flat-square&logo=exclamation) Dépôt de réclamations
 
-- **💼 Gestion des services**
-  - Création et publication de services par les professionnels
-  - Système de demandes clients
-  - Propositions et négociations
+#### 🔧 **Professionnels**
+- ![Manage](https://img.shields.io/badge/-Manage-cyan?style=flat-square&logo=settings) Gestion des services
+- ![Create](https://img.shields.io/badge/-Create-green?style=flat-square&logo=plus-circle) Création de services
+- ![Schedule](https://img.shields.io/badge/-Schedule-blue?style=flat-square&logo=calendar) Affichage des disponibilités
+- ![Handle](https://img.shields.io/badge/-Handle-purple?style=flat-square&logo=check) Traitement des demandes
 
-- **⭐ Système d'évaluation**
-  - Reviews et notations
-  - Gestion des réclamations
-  - Suivi de la qualité des services
+#### 👨‍💼 **Administrateurs**
+- ![Supervise](https://img.shields.io/badge/-Supervision-red?style=flat-square&logo=eye) Supervision globale
+- ![Manage](https://img.shields.io/badge/-Management-orange?style=flat-square&logo=users) Gestion des professionnels
+- ![Process](https://img.shields.io/badge/-Process-yellow?style=flat-square&logo=cog) Traitement des réclamations
+- ![Monitor](https://img.shields.io/badge/-Monitor-green?style=flat-square&logo=chart-line) Supervision des transactions
 
-- **🛒 E-commerce**
-  - Gestion du panier
-  - Traitement des commandes
-  - Historique des transactions
-
-### Fonctionnalités Techniques
-
-- **🔒 Sécurité**
-  - Authentification JWT
-  - Chiffrement des mots de passe avec BCrypt
-  - Protection des routes avec Guards
-
-- **🎨 Interface Utilisateur**
-  - Design responsive et moderne
-  - Interfaces intuitives avec Angular Material
-  - Optimisation des performances avec Lazy Loading
-
-## 🏗️ Architecture
-
-L'application suit une architecture en couches modulaire :
-
-```
-┌─────────────────────────────────────┐
-│           Frontend (Angular)        │
-│    ┌─────────────────────────────┐  │
-│    │    Presentation Layer       │  │
-│    └─────────────────────────────┘  │
-└─────────────────────────────────────┘
-                    │
-                    │ HTTP/REST API
-                    ▼
-┌─────────────────────────────────────┐
-│          Backend (Spring Boot)     │
-│    ┌─────────────────────────────┐  │
-│    │      Controller Layer      │  │
-│    └─────────────────────────────┘  │
-│    ┌─────────────────────────────┐  │
-│    │       Service Layer        │  │
-│    └─────────────────────────────┘  │
-│    ┌─────────────────────────────┐  │
-│    │      Repository Layer      │  │
-│    └─────────────────────────────┘  │
-└─────────────────────────────────────┘
-                    │
-                    │ JPA/Hibernate
-                    ▼
-┌─────────────────────────────────────┐
-│           MySQL Database           │
-└─────────────────────────────────────┘
-```
-
-## 🛠️ Technologies Utilisées
+## 🛠 Technologies Utilisées
 
 ### Backend
-- **Spring Boot** - Framework Java pour le développement d'applications web
-- **Spring Security** - Authentification et autorisation
-- **Spring Data JPA** - Couche d'accès aux données
-- **MySQL** - Base de données relationnelle
-- **JWT** - Tokens d'authentification
-- **BCrypt** - Chiffrement des mots de passe
-- **Maven** - Gestion des dépendances
+![Spring Boot](https://img.shields.io/badge/Spring%20Boot-6DB33F?style=for-the-badge&logo=spring-boot&logoColor=white)
+![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
+![JWT](https://img.shields.io/badge/JWT-000000?style=for-the-badge&logo=json-web-tokens&logoColor=white)
 
 ### Frontend
-- **Angular 17** - Framework TypeScript pour SPA
-- **TypeScript** - Langage de programmation typé
-- **Angular Material** - Composants UI
-- **Bootstrap** - Framework CSS responsive
-- **NgRx** - Gestion d'état (optionnel)
-- **HttpClient** - Communication avec l'API
+![Angular](https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
+![Angular Material](https://img.shields.io/badge/Angular%20Material-009688?style=for-the-badge&logo=angular&logoColor=white)
+![Bootstrap](https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white)
 
 ### DevOps & Outils
-- **Docker** - Conteneurisation
-- **StarUML** - Modélisation UML
-- **Git** - Contrôle de version
+![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
+![Maven](https://img.shields.io/badge/Maven-C71A36?style=for-the-badge&logo=apache-maven&logoColor=white)
+![StarUML](https://img.shields.io/badge/StarUML-FF6B6B?style=for-the-badge&logo=uml&logoColor=white)
 
-## 📋 Prérequis
+## 🏗 Architecture
 
-Avant d'installer l'application, assurez-vous d'avoir :
+### Architecture Système
+```mermaid
+graph TB
+    subgraph "Frontend Layer"
+        A[Angular App]
+        B[Components]
+        C[Services]
+        D[Guards]
+    end
+    
+    subgraph "API Gateway"
+        E[Spring Boot REST API]
+    end
+    
+    subgraph "Business Layer"
+        F[Controllers]
+        G[Services]
+        H[Security/JWT]
+    end
+    
+    subgraph "Data Layer"
+        I[JPA/Hibernate]
+        J[MySQL Database]
+    end
+    
+    A --> B
+    B --> C
+    C --> E
+    E --> F
+    F --> G
+    G --> I
+    I --> J
+    H --> F
+    D --> C
+```
 
-- **Java 11+** installé
-- **Node.js 16+** et npm
-- **MySQL 8.0+** 
-- **Docker** (optionnel, pour la conteneurisation)
-- **Git** pour cloner le repository
+### Architecture en Couches
+```
+┌─────────────────────────────────┐
+│       Presentation Layer        │
+│         (Angular)               │
+├─────────────────────────────────┤
+│       Business Layer            │
+│      (Spring Boot)              │
+├─────────────────────────────────┤
+│       Data Access Layer         │
+│    (JPA/Hibernate)              │
+├─────────────────────────────────┤
+│       Database Layer            │
+│        (MySQL)                  │
+└─────────────────────────────────┘
+```
 
 ## 🚀 Installation
 
-### 1. Cloner le repository
+### Prérequis
+- ![Java](https://img.shields.io/badge/Java-11+-orange) Java 11 ou supérieur
+- ![Node.js](https://img.shields.io/badge/Node.js-16+-green) Node.js 16 ou supérieur
+- ![MySQL](https://img.shields.io/badge/MySQL-8.0+-blue) MySQL 8.0 ou supérieur
+- ![Docker](https://img.shields.io/badge/Docker-Latest-blue) Docker (optionnel)
+
+### Installation Locale
+
+1. **Cloner le repository**
+   ```bash
+   git clone https://github.com/votre-username/my-bricole.git
+   cd my-bricole
+   ```
+
+2. **Configuration Base de Données**
+   ```sql
+   CREATE DATABASE my_bricole_db;
+   CREATE USER 'my_bricole_user'@'localhost' IDENTIFIED BY 'password';
+   GRANT ALL PRIVILEGES ON my_bricole_db.* TO 'my_bricole_user'@'localhost';
+   ```
+
+3. **Backend Setup**
+   ```bash
+   cd backend
+   # Configurer application.properties
+   mvn clean install
+   mvn spring-boot:run
+   ```
+
+4. **Frontend Setup**
+   ```bash
+   cd frontend
+   npm install
+   ng serve
+   ```
+
+### Installation avec Docker
 
 ```bash
-git clone https://github.com/votre-username/my-bricole.git
-cd my-bricole
-```
-
-### 2. Configuration de la base de données
-
-Créez une base de données MySQL :
-
-```sql
-CREATE DATABASE mybricole_db;
-CREATE USER 'mybricole_user'@'localhost' IDENTIFIED BY 'password';
-GRANT ALL PRIVILEGES ON mybricole_db.* TO 'mybricole_user'@'localhost';
-FLUSH PRIVILEGES;
-```
-
-### 3. Installation du Backend
-
-```bash
-cd backend
-./mvnw clean install
-```
-
-### 4. Installation du Frontend
-
-```bash
-cd ../frontend
-npm install
-```
-
-## ⚙️ Configuration
-
-### Backend (application.properties)
-
-Créez le fichier `src/main/resources/application.properties` :
-
-```properties
-# Configuration Base de données
-spring.datasource.url=jdbc:mysql://localhost:3306/mybricole_db
-spring.datasource.username=mybricole_user
-spring.datasource.password=password
-spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
-
-# Configuration JPA/Hibernate
-spring.jpa.hibernate.ddl-auto=update
-spring.jpa.show-sql=true
-spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL8Dialect
-
-# Configuration JWT
-jwt.secret=mySecretKey
-jwt.expiration=86400000
-
-# Configuration serveur
-server.port=8080
-```
-
-### Frontend (environment.ts)
-
-Créez le fichier `src/environments/environment.ts` :
-
-```typescript
-export const environment = {
-  production: false,
-  apiUrl: 'http://localhost:8080/api'
-};
-```
-
-## 🏃‍♂️ Utilisation
-
-### Démarrage du Backend
-
-```bash
-cd backend
-./mvnw spring-boot:run
-```
-
-Le backend sera accessible sur `http://localhost:8080`
-
-### Démarrage du Frontend
-
-```bash
-cd frontend
-ng serve
-```
-
-Le frontend sera accessible sur `http://localhost:4200`
-
-### Utilisation avec Docker
-
-```bash
-# Construction et démarrage des conteneurs
+# Construire et lancer tous les services
 docker-compose up -d
 
-# Arrêt des conteneurs
-docker-compose down
+# L'application sera accessible sur :
+# Frontend: http://localhost:4200
+# Backend API: http://localhost:8080
+# Base de données: localhost:3306
 ```
 
-## 📡 API Endpoints
+## 📚 Utilisation
 
-### Authentification
-```
-POST /api/auth/login      - Connexion utilisateur
-POST /api/auth/register   - Inscription utilisateur
-POST /api/auth/logout     - Déconnexion
-```
+### Interface Utilisateur
 
-### Gestion des utilisateurs
-```
-GET    /api/clients           - Lister tous les clients
-GET    /api/clients/{id}      - Obtenir un client par ID
-POST   /api/clients           - Créer un nouveau client
-PUT    /api/clients/{id}      - Modifier un client
-DELETE /api/clients/{id}      - Supprimer un client
-```
+#### 🏠 **Page d'Accueil**
+- Présentation des services disponibles
+- Accès rapide à l'inscription/connexion
+- Navigation intuitive
 
-### Gestion des services
-```
-GET    /api/services          - Lister tous les services
-POST   /api/services          - Créer un nouveau service
-GET    /api/services/{id}     - Obtenir un service par ID
-PUT    /api/services/{id}     - Modifier un service
-DELETE /api/services/{id}     - Supprimer un service
+#### 🔐 **Authentification**
+```typescript
+// Exemple de connexion
+const loginData = {
+  email: "user@example.com",
+  password: "securePassword123"
+};
+
+authService.login(loginData).subscribe(
+  response => {
+    // Redirection vers dashboard
+  }
+);
 ```
 
-### Gestion des demandes
-```
-GET    /api/demandes          - Lister toutes les demandes
-POST   /api/demandes          - Créer une nouvelle demande
-GET    /api/demandes/{id}     - Obtenir une demande par ID
-PUT    /api/demandes/{id}     - Modifier une demande
-```
+#### 📋 **Gestion des Projets**
+- Création de nouveaux projets
+- Upload d'images
+- Suivi des demandes
 
-## 📁 Structure du Projet
+## 📊 Schémas UML
 
-```
-my-bricole/
-├── backend/
-│   ├── src/
-│   │   └── main/
-│   │       ├── java/
-│   │       │   └── com/mybricole/
-│   │       │       ├── controller/
-│   │       │       ├── service/
-│   │       │       ├── repository/
-│   │       │       ├── entity/
-│   │       │       ├── dto/
-│   │       │       └── config/
-│   │       └── resources/
-│   │           └── application.properties
-│   ├── pom.xml
-│   └── Dockerfile
-├── frontend/
-│   ├── src/
-│   │   ├── app/
-│   │   │   ├── components/
-│   │   │   ├── services/
-│   │   │   ├── models/
-│   │   │   ├── guards/
-│   │   │   └── modules/
-│   │   ├── assets/
-│   │   └── environments/
-│   ├── package.json
-│   └── Dockerfile
-├── docker-compose.yml
-├── README.md
-└── docs/
-    ├── uml-diagrams/
-    └── api-documentation/
+### Diagramme de Cas d'Utilisation
+```mermaid
+graph LR
+    V[Visiteur] --> |consulte| CAT[Catalogue Services]
+    V --> |recherche| SEARCH[Recherche Services]
+    
+    C[Client] --> |demande| SERVICE[Service]
+    C --> |évalue| EVAL[Évaluation]
+    C --> |dépose| REC[Réclamation]
+    
+    P[Professionnel] --> |crée| SERV[Services]
+    P --> |affiche| DISPO[Disponibilités]
+    P --> |gère| DEM[Demandes]
+    
+    A[Admin] --> |gère| PROF[Professionnels]
+    A --> |traite| RECL[Réclamations]
+    A --> |supervise| TRANS[Transactions]
 ```
 
-## 👥 Contributeurs
+### Diagramme de Classes Simplifié
+```mermaid
+classDiagram
+    class Utilisateur {
+        +Long id
+        +String nom
+        +String email
+        +String motDePasse
+        +Role role
+        +authentifier()
+    }
+    
+    class Client {
+        +String adresse
+        +List~Demande~ demandes
+        +List~Proposition~ propositions
+    }
+    
+    class Professionnel {
+        +List~Service~ services
+        +List~Review~ reviews
+        +List~Proposition~ propositions
+    }
+    
+    class Administrateur {
+        +List~Client~ clients
+        +List~Professionnel~ professionnels
+        +List~Demande~ demandes
+    }
+    
+    class Demande {
+        +String titre
+        +String description
+        +BigDecimal prix
+        +List~Proposition~ propositions
+    }
+    
+    class Service {
+        +String nom
+        +String description
+        +BigDecimal prix
+    }
+    
+    class Review {
+        +int note
+        +String commentaire
+    }
+    
+    Utilisateur <|-- Client
+    Utilisateur <|-- Professionnel
+    Utilisateur <|-- Administrateur
+    
+    Client ||--o{ Demande
+    Professionnel ||--o{ Service
+    Service ||--o{ Review
+    Demande ||--o{ Proposition
+```
 
-- **SMAIKI Anas** - Développeur Full-Stack
-- **TEMLALI Abderrahmane** - Développeur Backend
-- **EL MASLOUHI Mouad** - Développeur Frontend
-- **EL MAILOUDI Ali** - Développeur Full-Stack
+## 🔌 API Documentation
 
-**Encadré par :** Monsieur Slimane Bah
+### Endpoints Principaux
 
-## 📝 Licence
+#### Authentication
+```http
+POST /api/auth/login
+Content-Type: application/json
 
-Ce projet a été développé dans le cadre académique - Filière Génie Informatique et Digitalisation, Année Universitaire 2024/2025.
+{
+  "email": "user@example.com",
+  "password": "password123"
+}
+```
 
-## 🔮 Évolutions Futures
+#### Services
+```http
+GET /api/services
+Authorization: Bearer <token>
 
-- Intelligence artificielle pour l'analyse des projets
-- Chat en temps réel entre utilisateurs
-- Application mobile complémentaire
-- Système de géolocalisation des services
-- Intégration de systèmes de paiement en ligne
-- Module de recommandations personnalisées
+POST /api/services
+Authorization: Bearer <token>
+Content-Type: application/json
 
-## 📞 Support
+{
+  "nom": "Plomberie",
+  "description": "Réparation de fuites",
+  "prix": 50.00
+}
+```
 
-Pour toute question ou problème, veuillez ouvrir une issue sur le repository GitHub ou contacter l'équipe de développement.
+#### Projets
+```http
+GET /api/projects
+Authorization: Bearer <token>
+
+POST /api/projects
+Authorization: Bearer <token>
+Content-Type: multipart/form-data
+
+title: "Rénovation Cuisine"
+description: "Renovation complète"
+image: [file]
+```
+
+### Codes de Statut
+- ![200](https://img.shields.io/badge/200-OK-green) Succès
+- ![201](https://img.shields.io/badge/201-Created-green) Ressource créée
+- ![400](https://img.shields.io/badge/400-Bad%20Request-orange) Requête invalide
+- ![401](https://img.shields.io/badge/401-Unauthorized-red) Non authentifié
+- ![403](https://img.shields.io/badge/403-Forbidden-red) Accès interdit
+- ![404](https://img.shields.io/badge/404-Not%20Found-red) Ressource non trouvée
+- ![500](https://img.shields.io/badge/500-Server%20Error-red) Erreur serveur
+
+## 🔒 Sécurité
+
+### Mesures de Sécurité Implémentées
+
+- **Authentification JWT** : Tokens sécurisés pour l'authentification
+- **Chiffrement BCrypt** : Mots de passe hashés avec BCrypt
+- **Gestion des Rôles** : Système de permissions (ADMIN, USER)
+- **Guards Angular** : Protection des routes sensibles
+- **Validation des Données** : Validation côté client et serveur
+- **CORS Configuration** : Configuration sécurisée des origines
+
+### Configuration de Sécurité
+```java
+@Configuration
+@EnableWebSecurity
+public class SecurityConfig {
+    
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+    
+    @Bean
+    public JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint() {
+        return new JwtAuthenticationEntryPoint();
+    }
+}
+```
+
+
+### Encadrement
+**Monsieur Slimane Bah** - Encadrant Académique
 
 ---
 
-**Année Universitaire :** 2024/2025  
-**Filière :** Génie Informatique et Digitalisation
+## 📈 Métriques du Projet
+
+![Languages](https://img.shields.io/github/languages/count/username/my-bricole)
+![Top Language](https://img.shields.io/github/languages/top/username/my-bricole)
+![Code Size](https://img.shields.io/github/languages/code-size/username/my-bricole)
+![Last Commit](https://img.shields.io/github/last-commit/username/my-bricole)
+
+## 🚀 Roadmap & Évolutions Futures
+
+### Version 2.0 - À venir
+- [ ] Intelligence Artificielle pour l'analyse des projets
+- [ ] Chat en temps réel entre clients et professionnels
+- [ ] Application mobile complémentaire (React Native)
+- [ ] Système de géolocalisation avancé
+- [ ] Intégration de moyens de paiement en ligne
+- [ ] Notifications push en temps réel
+- [ ] Système de recommandations personnalisées
+
+### Améliorations Techniques
+- [ ] Migration vers microservices
+- [ ] Intégration CI/CD avec GitHub Actions
+- [ ] Tests automatisés (Jest, Cypress)
+- [ ] Monitoring avec Prometheus & Grafana
+- [ ] Cache Redis pour les performances
+- [ ] API Rate Limiting
+
+## 🐛 Signaler des Bugs
+
+Si vous trouvez un bug, veuillez créer une issue en utilisant le template suivant :
+
+```markdown
+**Description du Bug**
+Description claire et concise du problème.
+
+**Reproduction**
+Étapes pour reproduire le comportement :
+1. Aller à '...'
+2. Cliquer sur '....'
+3. Faire défiler vers '....'
+4. Voir l'erreur
+
+**Comportement Attendu**
+Description claire de ce qui devrait se passer.
+
+**Screenshots**
+Si applicable, ajouter des screenshots.
+
+**Environnement:**
+ - OS: [e.g. Windows, macOS, Linux]
+ - Navigateur [e.g. chrome, safari]
+ - Version [e.g. 22]
+```
+
+## 🤝 Contribution
+
+Les contributions sont les bienvenues ! Veuillez lire notre [CONTRIBUTING.md](CONTRIBUTING.md) pour plus de détails sur notre code de conduite et le processus de soumission des pull requests.
+
+### Processus de Contribution
+1. Fork le projet
+2. Créer une branche feature (`git checkout -b feature/AmazingFeature`)
+3. Commit vos changements (`git commit -m 'Add some AmazingFeature'`)
+4. Push vers la branche (`git push origin feature/AmazingFeature`)
+5. Ouvrir une Pull Request
+
+
+<div align="center">
+  <p><strong>Made with ❤️ by the My Bricole Team</strong></p>
+  <p>
+    <a href="#top">⬆️ Retour au top</a>
+  </p>
+</div>
+
+---
+
+**Année Universitaire 2024/2025**  
+**Filière : Génie Informatique et Digitalisation**
