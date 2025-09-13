@@ -1,0 +1,23 @@
+div i {
+  color: white;
+  margin-left: 25px;
+}
+.sub-headers {
+  color: white !important;
+  font-weight: 500;
+  line-height: 2rem;
+}
+a {
+  text-decoration: none;
+  color:white !important;
+}
+.home{
+    margin-top: 110px;
+    margin-left: 80px !important;
+}
+@media (max-width: 992px) {
+  .home{
+    margin-top: 20px;
+    margin-left: 0px;
+  }
+}

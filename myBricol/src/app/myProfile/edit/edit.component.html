@@ -1,0 +1,310 @@
+<div
+  class="background-container p-5 row justify-content-center text-center"
+  style="height: 100vh; overflow: hidden"
+  *ngIf="user"
+>
+  <div class="Form col-sm-10 col-md-6 col-lg-6 p-4">
+    <div class="row justify-content-between">
+      <div class="col-5">
+        <button
+          (click)="navigateToHomePage()"
+          id="Bricool"
+          mat-button
+          style="
+            background-color: white;
+            border: none;
+            font-weight: 500;
+            font-size: 40px;
+            float: left;
+          "
+        >
+          BriC<span style="color: #0652dd">oo</span>l
+        </button>
+      </div>
+      <div
+        class="col-5 mt-2"
+        style="font-size: 20px; color: green; font-weight: 500"
+      >
+        <span class="green-circle">{{ count }}</span>
+        <span *ngIf="count == 1"> Personal Info </span>
+        <span *ngIf="count == 2"> Professional Info </span>
+      </div>
+    </div>
+
+    <form [formGroup]="personForm" class="mt-3" (ngSubmit)="onSubmit()">
+      <div *ngIf="count == 1">
+        <div class="mb-4">
+          <input
+            type="text"
+            class="form-control"
+            id="firstName"
+            formControlName="firstName"
+            placeholder="First Name"
+          />
+          <div
+            class="text-start mx-2 mt-2 error-message"
+            *ngIf="
+              personForm.get('firstName').hasError('required') &&
+              personForm.get('firstName').touched
+            "
+          >
+            First Name is required.
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <input
+            type="text"
+            class="form-control"
+            id="lastName"
+            formControlName="lastName"
+            placeholder="Last Name"
+          />
+          <div
+            class="text-start mx-2 mt-2 error-message"
+            *ngIf="
+              personForm.get('lastName').hasError('required') &&
+              personForm.get('lastName').touched
+            "
+          >
+            Last Name is required.
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <div class="form-check form-check-inline">
+            <input
+              class="form-check-input"
+              type="radio"
+              id="male"
+              value="MALE"
+              formControlName="gender"
+            />
+            <label class="form-check-label" for="male">Male</label>
+          </div>
+
+          <div class="form-check form-check-inline">
+            <input
+              class="form-check-input"
+              type="radio"
+              id="female"
+              value="FEMALE"
+              formControlName="gender"
+            />
+            <label class="form-check-label" for="female"
+              >Female {{ personForm.value.Gender }}
+            </label>
+          </div>
+
+          <div
+            class="text-start mt-2 error-message"
+            *ngIf="
+              personForm.get('gender').hasError('required') &&
+              personForm.get('gender').touched
+            "
+          >
+            Gender is required.
+          </div>
+        </div>
+
+        <mat-form-field
+          id="dateInput"
+          style="background-color: white !important; width: 100%"
+        >
+          <input
+            matInput
+            [matDatepicker]="datepicker"
+            id="YearsOfBirth"
+            formControlName="YearsOfBirth"
+            placeholder="Insert Your Birth Date"
+          />
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="datepicker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #datepicker>
+            <mat-datepicker-actions>
+              <button mat-button matDatepickerCancel>Cancel</button>
+              <button mat-raised-button color="primary" matDatepickerApply>
+                Apply
+              </button>
+            </mat-datepicker-actions>
+          </mat-datepicker>
+        </mat-form-field>
+        <div
+          class="text-start mb-2 error-message"
+          *ngIf="
+            personForm.get('YearsOfBirth').hasError('required') &&
+            personForm.get('YearsOfBirth').touched
+          "
+        >
+          Years of Birth is required.
+        </div>
+        <div
+          class="text-start mb-2 error-message"
+          *ngIf="
+            personForm.get('YearsOfBirth').hasError('underage') &&
+            personForm.get('YearsOfBirth').touched
+          "
+        >
+          The user is younger than 18 years.
+        </div>
+
+        <button
+          type="button"
+          class="btn btn-primary"
+          style="width: 100%; background-color: #0652dd"
+          (click)="onContinue()"
+        >
+          Continue
+        </button>
+      </div>
+      <div *ngIf="count == 2">
+        <div class="row">
+          <div class="mb-4">
+            <input
+              #CitiesInput
+              class="form-control"
+              type="text"
+              id="city"
+              placeholder=" Enter Your City Name"
+              matInput
+              formControlName="city"
+              [matAutocomplete]="autoCities"
+              (focus)="filterCities()"
+              (input)="filterCities()"
+            />
+            <mat-autocomplete requireSelection #autoCities="matAutocomplete">
+              <mat-option *ngFor="let city of filteredCities" [value]="city">
+                {{ city }}
+              </mat-option>
+            </mat-autocomplete>
+            <div
+              class="text-start mx-2 mb-2 error-message"
+              *ngIf="
+                personForm.get('city').hasError('required') &&
+                  personForm.get('city').touched;
+                else notRequiredError
+              "
+            >
+              Please choose a valid city from the list.
+            </div>
+
+            <ng-template #notRequiredError>
+              <div
+                class="text-start mx-2 mb-2 error-message"
+                *ngIf="
+                  personForm.get('city').hasError('notInCityList') &&
+                  personForm.get('city').touched
+                "
+              >
+                Please choose a valid city from the list.
+              </div>
+            </ng-template>
+            <!-- Assuming your FormGroup is named personForm -->
+
+            <div class="mt-4 mb-4">
+              <div class="row" formArrayName="Occupation">
+                <div
+                  class="col-lg-12 my-3"
+                  *ngFor="
+                    let control of personForm.get('Occupation')['controls'];
+                    let i = index
+                  "
+                >
+                  <div class="row" [formGroupName]="i">
+                    <div class="col-sm-8">
+                      <div class="form-group">
+                        <input
+                          type="text"
+                          placeholder="Occupation"
+                          class="form-control"
+                          matInput
+                          [formControl]="control"
+                          [matAutocomplete]="autoOptions"
+                          (input)="filterOptions()"
+                          (focus)="filterOptions()"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-sm-3">
+                      <div class="form-group">
+                        <mat-autocomplete
+                          #autoOptions="matAutocomplete"
+                          (optionSelected)="
+                            onOptionSelected($event, optionsInput, autoOptions)
+                          "
+                        >
+                          <mat-option
+                            *ngFor="let option of filteredOptions"
+                            [value]="option"
+                            >{{ option }}</mat-option
+                          >
+                        </mat-autocomplete>
+                        <div
+                          class="text-start mx-2 mb-2 error-message"
+                          *ngIf="
+                            control.hasError('notInOccupationList') &&
+                            control.touched
+                          "
+                        >
+                          Please choose a valid occupation from the list.
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-1 d-flex align-items-end">
+                      <div class="form-group">
+                        <button
+                          type="button"
+                          class="btn btn-danger"
+                          (click)="removeOccupation(i)"
+                          *ngIf="i > 0"
+                        >
+                          Delete
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row justify-content-center">
+                <div class="col-md-5">
+                  <button
+                    type="button"
+                    class="btn btn-primary"
+                    (click)="addOccupation()"
+                  >
+                    Add Occupation
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="row justify-content-between">
+              <div class="col-12 col-md-8 mb-3 mb-md-0 order-md-2">
+                <button
+                  type="submit"
+                  class="btn btn-success"
+                  style="width: 100%"
+                >
+                  Submit
+                </button>
+              </div>
+
+              <div class="col-12 col-md-3 order-md-1">
+                <button
+                  (click)="onReturn()"
+                  type="button"
+                  class="btn btn-primary"
+                  style="width: 100%; background-color: #0652dd"
+                >
+                  Return
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

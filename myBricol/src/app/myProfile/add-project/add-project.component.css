@@ -1,0 +1,44 @@
+.container {
+  background: linear-gradient(135deg, #6b11cbc9, #2574fcea);
+  padding: 20px;
+  border-radius: 10px;
+  color: white;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  font-size: 32px; /* Taille du texte */
+  font-weight: 700; /* Gras */
+  color: #ffffff; /* Couleur blanche */
+  text-align: center; /* Centrer le texte */
+  margin-bottom: 20px; /* Espace sous le titre */
+  text-transform: uppercase; /* Mettre le titre en majuscule */
+  letter-spacing: 2px; /* Espacement entre les lettres */
+  font-family: 'Arial', sans-serif; /* Police moderne */
+}
+label i {
+  margin-right: 8px; /* Adjust the value as needed */
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-control {
+  border-radius: 5px;
+  padding: 10px;
+  border: none;
+}
+
+.btn-primary {
+  background-color: #5c6bc0;  /* Bleu doux */
+  border: none;
+  padding: 10px 20px;
+  font-weight: bold;
+  transition: background 0.3s ease-in-out;
+  color: white; /* Texte blanc pour le bouton */
+}
+
+.btn-primary:hover {
+  background-color: #3f51b5;  /* Un bleu un peu plus foncé au survol */
+}

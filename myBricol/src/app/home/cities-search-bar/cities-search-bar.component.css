@@ -1,0 +1,80 @@
+
+@media (max-width: 992px) {
+  .img-container {
+    display: none;
+  }
+
+
+}
+
+.svg-image {
+  width: 100%; /* Set the width of your container */
+  height: auto; /* Set the height of your container */
+  overflow: hidden; /* Hide any overflow beyond the container */
+}
+.fill-svg {
+  width: 100%;
+  height: 100%;
+}
+.container {
+  background-color: white !important;
+}
+
+.first-container {
+  padding: 40px;
+  margin-top: 45px;
+}
+.first-container h1 {
+  font-size: 40px;
+  text-align: start;
+  line-height: 1.2;
+}
+
+.first-container form {
+  margin-top: 30px;
+}
+
+.input-form {
+  min-width: 150px;
+  max-width: 300px;
+  width: 100%;
+}
+
+.input-full-width {
+  width: 75%;
+  background-color: white !important;
+}
+.search-button {
+  height: 56px !important;
+  margin-left: 5px !important;
+  justify-content: end !important;
+  background-color: #0652dd !important;
+}
+
+.icon-display {
+  transform: scale(2.5);
+  background-color: #0652dd;
+}
+.title-searching {
+  font-size: 18px;
+  font-weight: lighter;
+  color: black;
+  line-height: 1.5;
+}
+
+.title-searching span {
+  color: #0652dd;
+  font-style: italic;
+  font-weight: bolder;
+  text-decoration: underline;
+}
+
+
+.icon-svg {
+  max-height: 40px;
+  width: auto; /* Ensure that the width adjusts proportionally to the height */
+}
+
+
+
+

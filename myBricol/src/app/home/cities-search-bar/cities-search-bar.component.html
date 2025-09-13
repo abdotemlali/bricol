@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-4 mt-4 img-container" style="background-color: white">
+      <img
+        src="../../assets/images/morocco.png"
+        style="width: 100%; height: auto"
+        alt=""
+      />
+    </div>
+    <div class="col-lg-8 col-12">
+      <div class="first-container">
+        <h1 style="font-weight: 600">Cities where we work.</h1>
+        <form>
+          <mat-form-field
+            class="Input-form"
+            class="input-full-width"
+            appearance="outline"
+          >
+            <mat-label>Where's Your Next Adventure?</mat-label>
+            <input
+              #CitiesInput
+              type="text"
+              placeholder=" Enter Your City Name"
+              matInput
+              [formControl]="myCitiesControl"
+              [matAutocomplete]="autoCities"
+              (focus)="filterCities()"
+              (input)="filterCities()"
+            />
+            <mat-autocomplete requireSelection #autoCities="matAutocomplete">
+              <mat-option *ngFor="let city of filteredCities" [value]="city">
+                {{ city }}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+          <button
+            class="btn mx-2"
+            style="background-color: #219653; color: white; font-size: 1rem"
+          >
+            <i
+              class="bi bi-search"
+              style="font-size: 1.8rem; font-weight: 900"
+            ></i>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+<div class="Projects row d-flex justify-content-around my-3 mx-lg-3">
+  <div class="col-5 col-md-4" *ngFor="let project of projects">
+    <div class="card" style="border-radius: 10px; margin-bottom: 20px">
+      <img
+        [src]="'../../assets/images/' + project.src"
+        style="width: 100%; height: 250px"
+        class="card-img-top"
+        alt="..."
+      />
+      <div class="card-body text-center">
+        <h5 class="card-title">{{ project.title }}</h5>
+        <p class="card-text">
+          <i class="bi bi-tag"></i> {{ project.min }} dhs -
+          {{ project.max }} dhs
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

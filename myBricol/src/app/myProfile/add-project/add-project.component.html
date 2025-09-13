@@ -1,0 +1,66 @@
+<div class="container add-project-container">
+  <h2 class="text-center mb-4">Ajouter un Nouveau Projet</h2>
+  <form [formGroup]="projectForm" (ngSubmit)="onSubmit()" class="p-4 shadow rounded">
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="projectName"><i class="fas fa-project-diagram"></i> Nom du projet</label>
+          <input id="projectName" type="text" formControlName="projectName" class="form-control" required />
+        </div>
+
+        <div class="form-group">
+          <label for="startDate"><i class="fas fa-calendar-alt"></i> Date de début</label>
+          <input id="startDate" type="date" formControlName="startDate" class="form-control" required />
+        </div>
+
+        <div class="form-group">
+          <label for="endDate"><i class="fas fa-calendar-check"></i> Date de fin</label>
+          <input id="endDate" type="date" formControlName="endDate" class="form-control" required />
+        </div>
+
+        <div class="form-group">
+          <label for="budget"><i class="fas fa-wallet"></i> Budget (€)</label>
+          <input id="budget" type="number" formControlName="budget" class="form-control" required min="1" />
+        </div>
+
+        <div class="form-group">
+          <label for="status"><i class="fas fa-tasks"></i> Statut</label>
+          <select id="status" formControlName="status" class="form-control">
+            <option value="En attente">En attente</option>
+            <option value="En cours">En cours</option>
+            <option value="Terminé">Terminé</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="serviceType"><i class="fas fa-cogs"></i> Type de service</label>
+          <input id="serviceType" type="text" formControlName="serviceType" class="form-control" />
+        </div>
+
+        <div class="form-group">
+          <label for="location"><i class="fas fa-map-marker-alt"></i> Localisation</label>
+          <input id="location" type="text" formControlName="location" class="form-control" />
+        </div>
+
+        <div class="form-group">
+          <label for="bookingAvailability"><i class="fas fa-calendar-day"></i> Disponibilité</label>
+          <input id="bookingAvailability" type="text" formControlName="bookingAvailability" class="form-control" />
+        </div>
+
+        <div class="form-group">
+          <label for="description"><i class="fas fa-align-left"></i> Description</label>
+          <textarea id="description" formControlName="description" class="form-control" rows="3" required></textarea>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center mt-4">
+      <button class="btn btn-success">
+        <i class="fas fa-plus"></i> Ajouter un projet
+      </button>
+    </div>
+  </form>
+</div>

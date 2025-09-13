@@ -1,0 +1,297 @@
+
+<div
+  class="background-container p-5 row justify-content-center text-center"
+  style="height: 100vh; overflow: hidden"
+>
+  <div class="Form col-sm-10 col-md-6 col-lg-6 p-4">
+    <div class="row justify-content-between">
+      <div style="margin-left: 10px">
+        <button
+        (click)="navigateToHomePage()"
+        mat-button
+        class="brand-button"
+        style="font-size: larger"
+      >
+        My<span style="color: #135956">Bricole</span>
+      </button>
+
+      </div>
+      <div
+        class="col-5 mt-2"
+        style="font-size: 20px; color: green; font-weight: 500"
+      >
+        <span class="green-circle">{{ count }}</span>
+        <span *ngIf="count == 1"> Personal Info </span>
+        <span *ngIf="count == 2"> Personal Info </span>
+      </div>
+    </div>
+
+    <form [formGroup]="personForm" class="mt-3" (ngSubmit)="onSubmit()">
+      <div *ngIf="count == 1">
+        <div class="mb-4">
+          <input
+            type="text"
+            class="form-control"
+            id="firstName"
+            formControlName="firstName"
+            placeholder="First Name"
+          />
+          <div
+            class="text-start mx-2 mt-2 error-message"
+            *ngIf="
+              personForm.get('firstName').hasError('required') &&
+              personForm.get('firstName').touched
+            "
+          >
+            First Name is required.
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <input
+            type="text"
+            class="form-control"
+            id="lastName"
+            formControlName="lastName"
+            placeholder="Last Name"
+          />
+          <div
+            class="text-start mx-2 mt-2 error-message"
+            *ngIf="
+              personForm.get('lastName').hasError('required') &&
+              personForm.get('lastName').touched
+            "
+          >
+            Last Name is required.
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            formControlName="email"
+            placeholder="Email"
+          />
+
+          <div
+            class="text-start mx-2 mt-2 error-message"
+            *ngIf="
+              personForm.get('email').hasError('required') &&
+              personForm.get('email').touched
+            "
+          >
+            Email is required.
+          </div>
+          <div
+            class="text-start mt-2 error-message"
+            *ngIf="
+              personForm.get('email').hasError('pattern') &&
+              personForm.get('email').touched
+            "
+          >
+            Invalid email format.
+          </div>
+        </div>
+
+        <!-- Gender -->
+
+        <div class="mb-4">
+          <div class="form-check form-check-inline">
+            <input
+              class="form-check-input"
+              type="radio"
+              id="male"
+              value="MALE"
+              formControlName="gender"
+            />
+            <label class="form-check-label" for="male">Male</label>
+          </div>
+
+          <div class="form-check form-check-inline">
+            <input
+              class="form-check-input"
+              type="radio"
+              id="female"
+              value="FEMALE"
+              formControlName="gender"
+            />
+            <label class="form-check-label" for="female"
+              >Female
+            </label>
+          </div>
+          <!-- <div class="form-check form-check-inline">
+            <input
+              class="form-check-input"
+              type="radio"
+              id="other"
+              value="OTHER"
+              formControlName="gender"
+              (change)="onGenderSelectionChange('OTHER')"
+            />
+            <label class="form-check-label" for="other">Other</label>
+          </div> -->
+
+          <!-- Gender Error Message -->
+          <div
+            class="text-start mt-2 error-message"
+            *ngIf="
+              personForm.get('gender').hasError('required') &&
+              personForm.get('gender').touched
+            "
+          >
+            Gender is required.
+          </div>
+        </div>
+
+        <button
+          type="button"
+          class="btn btn-primary"
+          style="width: 100%; background-color: #0652dd"
+          (click)="onContinue()"
+        >
+          Continue
+        </button>
+      </div>
+      <div *ngIf="count == 2">
+        <div class="row">
+          <div class="mb-4">
+            <mat-form-field
+              id="dateInput"
+              style="background-color: white !important; width: 100%"
+            >
+              <input
+                matInput
+                [matDatepicker]="datepicker"
+                id="YearsOfBirth"
+                formControlName="YearsOfBirth"
+                placeholder="Insert Your Birth Date"
+              />
+              <mat-datepicker-toggle
+                matIconSuffix
+                [for]="datepicker"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #datepicker>
+                <mat-datepicker-actions>
+                  <button mat-button matDatepickerCancel>Cancel</button>
+                  <button mat-raised-button color="primary" matDatepickerApply>
+                    Apply
+                  </button>
+                </mat-datepicker-actions>
+              </mat-datepicker>
+            </mat-form-field>
+            <div
+              class="text-start mb-2 error-message"
+              *ngIf="
+                personForm.get('YearsOfBirth').hasError('required') &&
+                personForm.get('YearsOfBirth').touched
+              "
+            >
+              Years of Birth is required.
+            </div>
+            <div
+              class="text-start mb-2 error-message"
+              *ngIf="
+                personForm.get('YearsOfBirth').hasError('underage') &&
+                personForm.get('YearsOfBirth').touched
+              "
+            >
+              The user is younger than 18 years.
+            </div>
+
+            <div class="mb-4">
+              <input
+                type="text"
+                class="form-control"
+                id="phoneNumber"
+                formControlName="phoneNumber"
+                placeholder="Phone Number"
+              />
+              <div
+                class="text-start mx-2 mt-2 error-message"
+                *ngIf="
+                  personForm.get('phoneNumber').hasError('required') &&
+                  personForm.get('phoneNumber').touched
+                "
+              >
+                The Phone Number is required.
+              </div>
+              <div
+                class="text-start mt-2 error-message"
+                *ngIf="
+                  personForm.get('phoneNumber').hasError('pattern') &&
+                  personForm.get('phoneNumber').touched
+                "
+              >
+                Invalid Phone Number format.
+              </div>
+            </div>
+            <div class="mb-4">
+              <input
+                type="password"
+                class="form-control"
+                id="password"
+                formControlName="password"
+                placeholder="Password"
+              />
+            </div>
+
+            <div class="mb-4">
+              <input
+                type="password"
+                class="form-control"
+                id="passwordVerification"
+                formControlName="passwordVerification"
+                placeholder="Password Verification"
+              />
+
+              <div
+                class="text-start mx-2 mb-2 error-message"
+                *ngIf="
+                  personForm.get('passwordVerification').hasError('required') &&
+                  personForm.get('passwordVerification').touched
+                "
+              >
+                Password verification is required.
+              </div>
+              <div
+                class="text-start mx-2 mb-2 error-message"
+                *ngIf="
+                  personForm
+                    .get('passwordVerification')
+                    .hasError('passwordMismatch') &&
+                  personForm.get('passwordVerification').touched
+                "
+              >
+                Password verification does not match the password.
+              </div>
+            </div>
+            <div class="row justify-content-between">
+              <div class="col-12 col-md-8 mb-3 mb-md-0 order-md-2">
+                <button
+                  type="submit"
+                  class="btn btn-success"
+                  style="width: 100%"
+                >
+                  Sign Up
+                </button>
+              </div>
+
+              <div class="col-12 col-md-3 order-md-1">
+                <button
+                  (click)="onReturn()"
+                  type="button"
+                  class="btn btn-primary"
+                  style="width: 100%; background-color: #0652dd"
+                >
+                  Return
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

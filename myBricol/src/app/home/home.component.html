@@ -1,0 +1,227 @@
+<app-jobs-search-bar [options]="options"></app-jobs-search-bar>
+<div class="container">
+  <h1 class="mx-3 my-5" style="font-weight: 600; font-size: 1.7rem">
+    Popular Projects In Your Area
+  </h1>
+
+  <app-projects-card [projects]="projects"></app-projects-card>
+</div>
+
+<div
+  class="Everyday-life row"
+  style="background-color: #f3fff3; overflow: hidden"
+>
+  <div class="img-container col-lg-6" style="overflow-x: hidden">
+    <img
+      src="../../assets/images/welder.jpeg"
+      style="width: 100%; height: auto; max-height: 450px"
+      alt=""
+    />
+  </div>
+  <div class="col-12 col-lg-6 justify-content-center">
+    <div class="card-body text-start">
+      <p
+        class="card-title mt-4 mx-5"
+        style="
+          font-weight: 650;
+          font-size: 1.9rem;
+          margin-left: 5rem !important;
+        "
+      >
+        GO team at your fingertips
+      </p>
+
+      <div class="mx-4">
+        <p
+          class="card-text"
+          style="
+            color: #404145;
+            font-size: 1.3rem;
+            line-height: 1.3rem;
+            font-weight: 500;
+          "
+        >
+          Build your team of local, background-checked Taskers to help with —
+          and for life. Whatever you need, they’ve got it covered.
+        </p>
+        <p>
+          <i class="bi bi-check-circle"></i> Compare Tasker reviews, ratings,
+          and prices
+        </p>
+        <p>
+          <i class="bi bi-check-circle"></i> Choose and connect with the best
+          person for the job
+        </p>
+        <p>
+          <i class="bi bi-check-circle"></i> Save your favorites to book again
+          and again
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-takers-card [taskers]="taskers"></app-takers-card>
+<div
+  class="Everyday-life row"
+  style="background-color: #f3fff3; overflow: hidden"
+>
+  <div class="col-12 col-lg-6 justify-content-center">
+    <div class="card-body text-start">
+      <p
+        class="card-title mt-4 mx-5"
+        style="
+          font-weight: 650;
+          font-size: 1.9rem;
+          margin-left: 5rem !important;
+        "
+      >
+        Everyday life made easier
+      </p>
+
+      <div class="mx-5">
+        <p
+          class="card-text"
+          style="
+            color: #404145;
+            font-size: 1.3rem;
+            line-height: 1.5rem;
+            font-weight: 500;
+          "
+        >
+          When life gets busy, you don’t have to tackle it alone. Get time back
+          for what you love without breaking the bank.
+        </p>
+        <p><i class="bi bi-check-circle"></i> Stick to your budget</p>
+        <p><i class="bi bi-check-circle"></i> Pay when you're happy</p>
+        <p><i class="bi bi-check-circle"></i> Count on 24/7 support</p>
+      </div>
+    </div>
+  </div>
+  <div class="img-container col-lg-6" style="overflow-x: hidden">
+    <img
+      src="../../assets/images/EveryDayLife.jpg"
+      style="width: 100%; height: auto"
+      alt=""
+    />
+  </div>
+</div>
+
+<app-cities-search-bar [cities]="cities"></app-cities-search-bar>
+
+<div class="container-fluid">
+  <div class="row p-3 justify-content-center" style="background-color: #f3fff3">
+    <div class="text-center" style="font-size: 2.2rem; font-weight: 600">
+      Ready To Get Started ?
+    </div>
+    <div id="blueCard" class="col-lg-5 m-3" style="display: flex; flex-direction: column; justify-content: center;align-items: center;">
+        <img
+          class="img-fluid"
+          style="height: 300px; width: auto"
+          src="../../assets/images/screen.png"
+          alt=""
+        />
+      <div class="text-center" style="font-size: 1.5rem; font-weight: 500">
+        Hear that? The Sweet Sight Of Relief. Start Getting More Done.
+      </div>
+      <div class="text-center mt-3">
+        <button
+          class="btn btn-primary"
+          style="
+            width: 190px !important;
+            background-color: #135956;
+            border: 0;
+            color: white;
+            font-size: 1.5rem;
+          "
+        >
+          Sign up
+        </button>
+      </div>
+    </div>
+    <div class="col-lg-5 mt-5 m-lg-3" style="display: flex; flex-direction: column; justify-content: center;align-items: center;">
+
+        <img
+          class="img-fluid"
+          style="height: 300px; width: auto"
+          src="../../assets/images/amico.png"
+          alt=""
+        />
+      <div class="text-center" style="font-size: 1.5rem; font-weight: 500">
+        Grow your own business while saving the day for busy neighbors.
+      </div>
+      <div class="text-center mt-3">
+        <button
+          class="btn btn-primary"
+          style="
+            width: 220px !important;
+            background-color: #135956;
+            color: white;
+            border: 0;
+            font-size: 1.5rem;
+          "
+        >
+          Become A Tasker
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row d-flex justify-content-between my-5 mx-3">
+    <div
+      class="col-5 col-sm-5 col-md-4 col-lg-3 my-3 d-flex justify-content-center"
+      *ngFor="let offer of offers"
+    >
+      <button
+        style="
+          color: #135956;
+          border: #135956 solid 2px;
+          font-weight: 500;
+          font-size: 1.5rem;
+        "
+        class="px-3 btn"
+      >
+        {{ offer }}
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid" style="height: 300px">
+  <div class="row d-flex benayCard">
+    <div class="col-10 col-lg-8 p-3">
+      <h1
+        class="px-3"
+        style="font-size: 3rem; color: white; line-height: 3.5rem"
+      >
+        <span style="font-weight: 600">Suddenly it's all So </span>
+        <span style="font-style: italic; font-weight: 500">doable</span>
+      </h1>
+      <div class="pt-2">
+        <button
+          class="btn px-3 py-2 m-5"
+          style="
+            color: #135956;
+            background-color: white;
+            font-size: 2rem;
+            font-weight: 500;
+          "
+          (click)="navigateToSignUp()"
+        >
+          Join BriCool
+        </button>
+      </div>
+    </div>
+    <div class="col-lg-4 img-container float-end">
+      <img
+        style="height: 450px; width: auto"
+        src="../../assets/images/footer.png"
+        alt=""
+      />
+    </div>
+  </div>
+</div>
+
+<app-footer [home]="true"></app-footer>

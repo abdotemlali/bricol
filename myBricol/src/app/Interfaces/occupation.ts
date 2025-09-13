@@ -1,0 +1,13 @@
+export enum Occupation {
+  PLOMBERIE = 'PLOMBERIE',
+  ELECTRICITE = 'ELECTRICITE',
+  PEINTURE = 'PEINTURE',
+  MENUISERIE = 'MENUISERIE',
+  MACONNERIE = 'MACONNERIE',
+  JARDINAGE = 'JARDINAGE',
+  MENAGE = 'MENAGE',
+  CUISINE = 'CUISINE',
+  COUTURE = 'COUTURE',
+  AUTRE = 'AUTRE',
+  // ... continue with other occupations
+}

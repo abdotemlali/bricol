@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "bricool-ginf": {
+      "hosting": {
+        "bricool": [
+          "bricool-ginf"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "bricool-ginf"
+  }
+}

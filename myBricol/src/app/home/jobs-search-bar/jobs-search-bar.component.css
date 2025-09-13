@@ -1,0 +1,178 @@
+/* Responsive Design */
+@media (max-width: 992px) {
+  .img-container {
+    display: none;
+  }
+}
+
+/* General Styling */
+.container {
+  background-color: white !important;
+}
+
+/* SVG Styling */
+.svg-image {
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+}
+
+.fill-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.icon-svg {
+  max-height: 40px;
+  width: auto; /* Maintient le ratio */
+}
+
+/* First Container */
+.first-container {
+  padding: 2.5rem;
+  margin-top: 2.8rem;
+}
+
+.first-container h1 {
+  font-size: 2.5rem;
+  text-align: start;
+  line-height: 1.2;
+}
+
+.first-container form {
+  margin-top: 2rem;
+}
+
+/* Form Styling */
+.input-form {
+  min-width: 150px;
+  max-width: 300px;
+  width: 100%;
+}
+
+.input-full-width {
+  width: 75%;
+  background-color: white !important;
+}
+
+/* Search Button */
+.search-button {
+  height: 3.5rem !important;
+  margin-left: 0.3rem !important;
+  justify-content: end !important;
+  background-color: #135956 !important;
+  color: white;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+}
+
+/* Icon Display */
+.icon-display {
+  transform: scale(2.5);
+  background-color: #135956;
+}
+
+/* Title Styling */
+.title-searching {
+  font-size: 1.125rem;
+  font-weight: 300;
+  color: black;
+  line-height: 1.5;
+}
+
+.title-searching span {
+  color: #135956;
+  font-style: italic;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+/* Cards Styling */
+.cards mat-card {
+  border-radius: 15px;
+  border: none; /* Supprime la bordure */
+  background: linear-gradient(145deg, #e0f7fa, #b2ebf2); /* Dégradé doux */
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1); /* Ombre subtile */
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.cards mat-card:hover {
+  transform: translateY(-5px); /* Effet de levée au survol */
+  box-shadow: 6px 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Icons Styling */
+.icon-svg {
+  max-height: 50px;
+  width: auto;
+  filter: drop-shadow(2px 2px 5px rgba(0, 0, 0, 0.2)); /* Effet d’ombre */
+  transition: transform 0.3s ease-in-out;
+}
+
+.icon-svg:hover {
+  transform: scale(1.1); /* Effet d’agrandissement au survol */
+  filter: drop-shadow(4px 4px 10px rgba(0, 0, 0, 0.3)); /* Ombre plus marquée */
+}
+
+/* Card Titles */
+.cards mat-card-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #135956; /* Couleur principale */
+  text-align: center;
+}
+
+/* Card Content */
+.cards mat-card-content {
+  font-size: 1.125rem;
+  color: #333;
+  text-align: center;
+  line-height: 1.5;
+}
+
+/* Projects */
+.Projects .card-title {
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.Projects mat-divider {
+  border-top-width: 2px !important;
+}
+
+/* Everyday Life */
+.Everyday-life p {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin: 1.7rem 0 1.7rem 3rem;
+}
+
+.Everyday-life .img-container {
+  max-width: 100%;
+  max-height: 100%;
+  overflow: hidden;
+}
+
+/* Titles Styling */
+h5 {
+  font-size: 1rem; /* Augmenter la taille des titres */
+  font-weight: 700; /* Texte en gras */
+  font-family: 'Poppins', sans-serif; /* Changer la police */
+  text-align: center;
+  color: #135956; /* Couleur principale */
+  margin-bottom: 0.5rem;
+}
+
+/* Paragraph Styling */
+p {
+  font-size: 0.9rem; /* Taille légèrement plus grande */
+  font-weight: 300; /* Texte normal */
+  font-family: 'Roboto', sans-serif; /* Police différente pour plus de lisibilité */
+  text-align: center;
+  color: #333; /* Couleur plus douce */
+  line-height: 1.6;
+  max-width: 80%;
+  margin: 0 auto; /* Centrage du paragraphe */
+}
